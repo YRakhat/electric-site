@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -8,9 +9,13 @@
   <style>
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #fff;
   background: url('photo/fon.jpg') center/cover no-repeat fixed;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 /* === HEADER === */
@@ -18,14 +23,15 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 40px;
+  padding: 15px 20px;
   background-color: #0b3d91;
   color: white;
+  flex-wrap: wrap;
 }
 
-.logo {
-  display: flex;
-  align-items: center;
+.logo h1 {
+  font-size: 28px;
+  margin: 0;
 }
 
 .contacts {
@@ -33,6 +39,7 @@ header {
   align-items: center;
   gap: 20px;
   font-size: 18px;
+  flex-wrap: wrap;
 }
 
 .contacts a {
@@ -41,6 +48,7 @@ header {
   display: flex;
   align-items: center;
   transition: opacity 0.3s;
+  white-space: nowrap;
 }
 
 .contacts a:hover {
@@ -51,17 +59,17 @@ header {
 .hero {
   background: none;
   text-align: center;
-  padding: 100px 20px 80px;
+  padding: 70px 20px 60px;
   text-shadow: 0 0 10px rgba(0,0,0,0.6);
 }
 
 .hero h1 {
-  font-size: 42px;
+  font-size: 36px;
   margin-bottom: 15px;
 }
 
 .hero p {
-  font-size: 20px;
+  font-size: 18px;
   max-width: 600px;
   margin: 0 auto;
 }
@@ -70,12 +78,12 @@ header {
 .services {
   text-align: center;
   padding: 60px 20px;
-  background-color: white; /* добавлен белый фон */
+  background-color: white;
   color: #0b3d91;
 }
 
 .services h2 {
-  font-size: 32px;
+  font-size: 30px;
   margin-bottom: 40px;
 }
 
@@ -85,30 +93,27 @@ header {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 40px 0;
+  padding: 20px 0;
 }
 
 .card {
   position: relative;
   background-color: rgba(0, 0, 0, 0.6);
   color: #fff;
-  width: 300px;
-  height: 200px;
+  width: 280px;
+  height: 190px;
   border-radius: 12px;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   text-align: center;
   box-shadow: 0 4px 15px rgba(0,0,0,0.4);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Затемняющий слой */
 .card::before {
   content: "";
   position: absolute;
@@ -118,17 +123,13 @@ header {
   transition: background 0.3s ease;
 }
 
-/* Подсветка при наведении */
 .card:hover::before {
   background: rgba(0, 0, 0, 0.1);
 }
 
-.card h3,
-.card p {
+.card h3, .card p {
   position: relative;
   z-index: 2;
-  color: #fff;
-  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
 }
 
 .card:hover {
@@ -136,40 +137,23 @@ header {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
-  .service-cards {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .card {
-    width: 90%;
-    height: 180px;
-  }
-}
-
-/* === КАРТИНКИ ДЛЯ КАРТОЧЕК === */
-.card1 { background-image: url("photo/usluga5.jpg"); }
-.card2 { background-image: url("photo/usluga6.jpg"); }
-.card3 { background-image: url("photo/usluga3.jpeg"); }
-.card4 { background-image: url("photo/usluga4.jpeg"); }
-
 /* === LIST SECTION === */
 .list-section {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   padding: 60px 10%;
-  gap: 50px;
+  gap: 40px;
   flex-wrap: wrap;
-  background-color: white; /* добавлен белый фон */
+  background-color: white;
   color: #0b3d91;
+  box-sizing: border-box;
 }
 
 .list-section ul {
   list-style: none;
   padding-left: 0;
+  margin: 0;
 }
 
 .list-section li {
@@ -190,12 +174,11 @@ header {
   font-size: 18px;
 }
 
-/* === IMAGE SLIDER === */
 .image-slider {
   position: relative;
   width: 40%;
-  min-width: 300px;
-  height: 500px;
+  min-width: 280px;
+  height: 400px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -227,10 +210,10 @@ header {
   background-color: white;
   border: 3px solid #0b3d91;
   color: #0b3d91;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 600;
   border-radius: 50px;
-  padding: 18px 60px;
+  padding: 15px 50px;
   text-align: center;
   text-decoration: none;
   box-shadow: 0 0 15px rgba(11, 61, 145, 0.4);
@@ -261,6 +244,7 @@ footer {
   background-color: #0b3d91;
   color: white;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 footer a {
@@ -273,32 +257,52 @@ footer a:hover {
   opacity: 0.8;
 }
 
-/* --- АДАПТАЦИЯ ДЛЯ СМАРТФОНОВ --- */
+/* === АДАПТАЦИЯ ДЛЯ СМАРТФОНОВ === */
 @media (max-width: 768px) {
-  header h1 {
-    font-size: 20px; /* уменьшили размер надписи Электрик Алматы */
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
   }
 
-  header .contact-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  .logo h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
   }
 
-  /* скрываем текстовый номер и надпись "WhatsApp" */
-  header .contact-info span,
-  header .contact-info a span {
-    display: none;
+  .contacts {
+    font-size: 16px;
+    gap: 12px;
   }
 
-  /* показываем только иконку WhatsApp */
-  header .contact-info a i {
-    display: inline-block;
-    font-size: 24px;
-    color: #25D366;
+  .hero {
+    padding: 60px 15px;
+  }
+
+  .hero h1 {
+    font-size: 26px;
+  }
+
+  .hero p {
+    font-size: 16px;
+  }
+
+  .list-section {
+    flex-direction: column;
+    padding: 40px 5%;
+    gap: 30px;
+  }
+
+  .image-slider {
+    width: 100%;
+    height: 300px;
+  }
+
+  .order-btn {
+    font-size: 16px;
+    padding: 14px 40px;
   }
 }
-
   </style>
 </head>
 
@@ -308,22 +312,16 @@ footer a:hover {
     <div class="logo">
       <h1>Электрик в Алматы</h1>
     </div>
-
     <div class="contacts">
-      <a href="tel:+77025892882"><i class="fas fa-phone" style="margin-right: 8px;"></i> +7 702 589 28 82</a>
-      <a href="https://wa.me/77025892882?text=Пишу%20из%20сайта%20хочу%20заказать%20услугу%20:" 
-      target="_blank">
-      <i class="fab fa-whatsapp" style="margin-right: 8px; color: #25D366;"></i> WhatsApp
+           <a href="https://wa.me/77025892882?text=Пишу%20из%20сайта%20хочу%20заказать%20услугу%20:" target="_blank">
+        <i class="fab fa-whatsapp" style="color: #25D366; font-size: 22px;"></i>
       </a>
-
-
     </div>
-
   </header>
 
   <section class="hero">
     <h1>Профессиональный электрик в Алматы</h1>
-    <p>Квалифицированная установка, ремонт и обслуживание электрических сетей в квартирах, домах и офисах.</p>
+    <p>Установка, ремонт и обслуживание электрики в квартирах, домах и офисах.</p>
   </section>
 
   <section class="services">
@@ -342,16 +340,10 @@ footer a:hover {
       <li>Замена и прокладка новой электропроводки</li>
       <li>Ремонт и устранение неисправностей в электросети</li>
       <li>Установка автоматов защиты и распределительных щитов</li>
-      <li>Диагностика и устранение коротких замыканий</li>
-      <li>Подключение бытовой техники (плиты, вытяжки, бойлеры)</li>
-      <li>Установка и обслуживание систем видеонаблюдения</li>
-      <li>Монтаж теплых полов (электрических)</li>
-      <li>Установка УЗО (устройств защитного отключения)</li>
-      <li>Обслуживание и ремонт электропроводки коммерческих объектов</li>
-      <li>Проверка электробезопасности и заземления</li>
-      <li>Устранение аварийных ситуаций (искрение, запах гари, отключение электричества)</li>
-      <li>Подключение и настройка генераторов и стабилизаторов напряжения</li>
-      <li>Монтаж наружного освещения (фасадного и садового)</li>
+      <li>Диагностика коротких замыканий</li>
+      <li>Подключение бытовой техники</li>
+      <li>Монтаж теплых полов</li>
+      <li>Установка УЗО и систем безопасности</li>
     </ul>
 
     <div class="image-slider">
@@ -359,28 +351,23 @@ footer a:hover {
       <img src="photo/sheat.jpg" alt="Монтаж щита">
       <img src="photo/light.jpg" alt="Электромонтаж">
       <img src="photo/usluga1.jpeg" alt="Теплый пол">
-      <img src="photo/usluga7.jpg" alt="Лампы">
     </div>
   </section>
 
   <div class="order-btn-wrapper">
-    <a href="https://wa.me/77025892882?text=Пишу%20из%20сайта%20хочу%20заказать%20услугу%20:" class="order-btn" target="_blank">
-      Заказать
-    </a>
+    <a href="https://wa.me/77025892882?text=Пишу%20из%20сайта%20хочу%20заказать%20услугу%20:" class="order-btn" target="_blank">Заказать</a>
   </div>
 
-<footer>
-  Сайт разработан веб-разработчиком 
-  <a href="https://wa.me/77074964617?text=Пишу%20из%20сайта%20электрика%20по%20вопросу%20разработки%20сайта%20" 
-     target="_blank">
-    Yermek Rakhat
-  </a>
-</footer>
+  <footer>
+    Сайт разработан веб-разработчиком 
+    <a href="https://wa.me/77074964617?text=Пишу%20из%20сайта%20электрика%20по%20вопросу%20разработки%20сайта%20" target="_blank">
+      Yermek Rakhat
+    </a>
+  </footer>
 
   <script>
     const images = document.querySelectorAll('.image-slider img');
     let current = 0;
-
     setInterval(() => {
       images[current].classList.remove('active');
       current = (current + 1) % images.length;
@@ -389,3 +376,4 @@ footer a:hover {
   </script>
 </body>
 </html>
+```
