@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Электрик в Алматы — Услуги электрика</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  background: url('photo/fon.jpg') center/cover no-repeat fixed;
+}
+
+/* === HEADER === */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #0b3d91;
+  color: white;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 18px;
+}
+
+.contacts a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.contacts a:hover {
+  opacity: 0.8;
+}
+
+/* === HERO === */
+.hero {
+  background: none;
+  text-align: center;
+  padding: 100px 20px 80px;
+  text-shadow: 0 0 10px rgba(0,0,0,0.6);
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* === SERVICES === */
+.services {
+  text-align: center;
+  padding: 60px 20px;
+  background-color: white; /* добавлен белый фон */
+  color: #0b3d91;
+}
+
+.services h2 {
+  font-size: 32px;
+  margin-bottom: 40px;
+}
+
+/* === SERVICE CARDS === */
+.service-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 40px 0;
+}
+
+.card {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  width: 300px;
+  height: 200px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Затемняющий слой */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 1;
+  transition: background 0.3s ease;
+}
+
+/* Подсветка при наведении */
+.card:hover::before {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.card h3,
+.card p {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .service-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+    height: 180px;
+  }
+}
+
+/* === КАРТИНКИ ДЛЯ КАРТОЧЕК === */
+.card1 { background-image: url("photo/usluga5.jpg"); }
+.card2 { background-image: url("photo/usluga6.jpg"); }
+.card3 { background-image: url("photo/usluga3.jpeg"); }
+.card4 { background-image: url("photo/usluga4.jpeg"); }
+
+/* === LIST SECTION === */
+.list-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 60px 10%;
+  gap: 50px;
+  flex-wrap: wrap;
+  background-color: white; /* добавлен белый фон */
+  color: #0b3d91;
+}
+
+.list-section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-section li {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.list-section li::before {
+  content: "\f00c";
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  color: #25D366;
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 18px;
+}
+
+/* === IMAGE SLIDER === */
+.image-slider {
+  position: relative;
+  width: 40%;
+  min-width: 300px;
+  height: 500px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.image-slider img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.image-slider img.active {
+  opacity: 1;
+}
+
+/* === ORDER BUTTON === */
+.order-btn-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 60px 0 80px 0;
+}
+
+.order-btn {
+  display: inline-block;
+  background-color: white;
+  border: 3px solid #0b3d91;
+  color: #0b3d91;
+  font-size: 20px;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 18px 60px;
+  text-align: center;
+  text-decoration: none;
+  box-shadow: 0 0 15px rgba(11, 61, 145, 0.4);
+  transition: all 0.3s ease;
+  animation: pulse 2.5s infinite;
+}
+
+.order-btn:hover {
+  box-shadow: 0 0 30px rgba(11, 61, 145, 0.7);
+  transform: scale(1.07);
+}
+
+.order-btn:active {
+  transform: scale(0.96);
+  box-shadow: 0 0 15px rgba(11, 61, 145, 0.9);
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 15px rgba(11, 61, 145, 0.4); }
+  50% { box-shadow: 0 0 35px rgba(11, 61, 145, 0.8); }
+  100% { box-shadow: 0 0 15px rgba(11, 61, 145, 0.4); }
+}
+
+/* === FOOTER === */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #0b3d91;
+  color: white;
+  font-size: 16px;
+}
+
+footer a {
+  color: inherit;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  opacity: 0.8;
+}
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">
+      <h1>Электрик в Алматы</h1>
+    </div>
+
+    <div class="contacts">
+      <a href="tel:+77025892882"><i class="fas fa-phone" style="margin-right: 8px;"></i> +7 702 589 28 82</a>
+      <a href="https://wa.me/77025892882?text=Пишу%20из%20сайта%20хочу%20заказать%20услугу%20:" 
+      target="_blank">
+      <i class="fab fa-whatsapp" style="margin-right: 8px; color: #25D366;"></i> WhatsApp
+      </a>
+
+
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>Профессиональный электрик в Алматы</h1>
+    <p>Квалифицированная установка, ремонт и обслуживание электрических сетей в квартирах, домах и офисах.</p>
+  </section>
+
+  <section class="services">
+    <h2>Наши услуги</h2>
+    <div class="service-cards">
+      <div class="card card1">Установка электроприборов и освещения</div>
+      <div class="card card2">Прокладка и замена электропроводки</div>
+      <div class="card card3">Ремонт и обслуживание электросетей</div>
+      <div class="card card4">Монтаж распределительных щитов</div>
+    </div>
+  </section>
+
+  <section class="list-section">
+    <ul>
+      <li>Установка и замена розеток и выключателей</li>
+      <li>Замена и прокладка новой электропроводки</li>
+      <li>Ремонт и устранение неисправностей в электросети</li>
+      <li>Установка автоматов защиты и распределительных щитов</li>
+      <li>Диагностика и устранение коротких замыканий</li>
+      <li>Подключение бытовой техники (плиты, вытяжки, бойлеры)</li>
+      <li>Установка и обслуживание систем видеонаблюдения</li>
+      <li>Монтаж теплых полов (электрических)</li>
+      <li>Установка УЗО (устройств защитного отключения)</li>
+      <li>Обслуживание и ремонт электропроводки коммерческих объектов</li>
+      <li>Проверка электробезопасности и заземления</li>
+      <li>Устранение аварийных ситуаций (искрение, запах гари, отключение электричества)</li>
+      <li>Подключение и настройка генераторов и стабилизаторов напряжения</li>
+      <li>Монтаж наружного освещения (фасадного и садового)</li>
+    </ul>
+
+    <div class="image-slider">
+      <img src="photo/usluga2.jpeg" alt="Видеонаблюдение" class="active">
+      <img src="photo/sheat.jpg" alt="Монтаж щита">
+      <img src="photo/light.jpg" alt="Электромонтаж">
+      <img src="photo/usluga1.jpeg" alt="Теплый пол">
+      <img src="photo/usluga7.jpg" alt="Лампы">
+    </div>
+  </section>
+
+  <div class="order-btn-wrapper">
+    <a href="https://wa.me/77025892882?text=Пишу%20из%20сайта%20хочу%20заказать%20услугу%20:" class="order-btn" target="_blank">
+      Заказать
+    </a>
+  </div>
+
+<footer>
+  Сайт разработан веб-разработчиком 
+  <a href="https://wa.me/77074964617?text=Пишу%20из%20сайта%20электрика%20по%20вопросу%20разработки%20сайта%20" 
+     target="_blank">
+    Yermek Rakhat
+  </a>
+</footer>
+
+  <script>
+    const images = document.querySelectorAll('.image-slider img');
+    let current = 0;
+
+    setInterval(() => {
+      images[current].classList.remove('active');
+      current = (current + 1) % images.length;
+      images[current].classList.add('active');
+    }, 4000);
+  </script>
+</body>
+</html>
