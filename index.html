@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Электрик в Алматы — Услуги электрика</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
@@ -272,6 +272,33 @@ footer a {
 footer a:hover {
   opacity: 0.8;
 }
+
+/* --- АДАПТАЦИЯ ДЛЯ СМАРТФОНОВ --- */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 20px; /* уменьшили размер надписи Электрик Алматы */
+  }
+
+  header .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* скрываем текстовый номер и надпись "WhatsApp" */
+  header .contact-info span,
+  header .contact-info a span {
+    display: none;
+  }
+
+  /* показываем только иконку WhatsApp */
+  header .contact-info a i {
+    display: inline-block;
+    font-size: 24px;
+    color: #25D366;
+  }
+}
+
   </style>
 </head>
 
@@ -291,6 +318,7 @@ footer a:hover {
 
 
     </div>
+
   </header>
 
   <section class="hero">
