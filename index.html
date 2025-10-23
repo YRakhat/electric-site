@@ -375,17 +375,25 @@ footer a:hover {
 }
 
 /* === ФОН ЧЕРЕЗ ПСЕВДОЭЛЕМЕНТ (устраняет дёргание и размытость) === */
+body {
+  position: relative;
+  overflow-x: hidden;
+  transform: translateZ(0);
+}
+
 body::before {
   content: "";
-  position: fixed;
+  position: absolute;
   inset: 0;
   background: url('photo/fon.jpg') center center / cover no-repeat;
   z-index: -1;
   will-change: transform;
-  transform: translateZ(0);
+  transform: translateY(var(--scrollY, 0));
   backface-visibility: hidden;
   perspective: 1000px;
+  transition: transform 0.25s ease-out;
 }
+
 
 
 
@@ -511,6 +519,14 @@ document.querySelectorAll('.image-slider').forEach(slider => {
     img.style.animationDelay = `${i * delay}s`;
   });
 });
+
+
+  window.addEventListener('scroll', () => {
+    document.body.style.setProperty('--scrollY', window.scrollY * 0.15 + 'px');
+  });
+
+
+
 </script>
 
 
