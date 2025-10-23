@@ -534,6 +534,88 @@ header {
 }
 
 
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 8px; /* расстояние между картинкой и текстом */
+}
+
+.logo-img {
+  width: 45px;      /* подгони под нужный размер */
+  height: auto;
+  border-radius: 50%; /* если хочешь — можно убрать */
+  transition: transform 0.3s ease;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #e63946; /* алый, можно поменять */
+  letter-spacing: 2px;
+  font-family: "Orbitron", sans-serif; /* технологичный шрифт */
+  transition: color 0.3s ease;
+}
+
+/* Эффекты при наведении */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  position: relative;
+}
+
+.logo-img {
+  width: 55px;
+  height: auto;
+  border-radius: 50%;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: drop-shadow(0 0 8px rgba(255, 0, 0, 0.5));
+}
+
+.logo-text {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #ff4d6d;
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 8px #ff4d6d,
+    0 0 16px #e63946,
+    0 0 24px #ffb3b3;
+  animation: energyFlow 3s infinite ease-in-out;
+  background: linear-gradient(90deg, #ff003c, #ff6a00, #ff003c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 300%;
+}
+
+.logo:hover .logo-img {
+  transform: scale(1.15) rotate(3deg);
+  filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.8));
+}
+
+.logo:hover .logo-text {
+  animation: energyFlow 1.5s infinite ease-in-out;
+}
+
+@keyframes energyFlow {
+  0% {
+    background-position: 0% 50%;
+    text-shadow: 0 0 8px #ff4d6d, 0 0 16px #e63946, 0 0 24px #ffb3b3;
+  }
+  50% {
+    background-position: 100% 50%;
+    text-shadow: 0 0 16px #ff6a00, 0 0 32px #ff003c, 0 0 48px #ffb3b3;
+  }
+  100% {
+    background-position: 0% 50%;
+    text-shadow: 0 0 8px #ff4d6d, 0 0 16px #e63946, 0 0 24px #ffb3b3;
+  }
+}
+
+
 
   </style>
 </head>
@@ -629,10 +711,12 @@ header {
   </div>
 
   <footer>
-    Сайт разработан веб-студией 
-    <a href="https://wa.me/77074964617?text=Пишу%20из%20сайта%20электрика%20по%20вопросу%20разработки%20сайта%20" target="_blank">
-      ALAYA HEX
-    </a>
+   
+ 
+<a href="https://wa.me/77074964617?text=Пишу%20из%20сайта%20электрика%20по%20вопросу%20разработки%20сайта%20" class="logo">
+  <img src="photo/logo2.png" alt="Alaya Hex Logo" class="logo-img">
+  <span class="logo-text">ALAYA HEX</span>
+</a>
   </footer>
 
 <script>
@@ -686,4 +770,3 @@ document.querySelectorAll('.image-slider').forEach(slider => {
 
 </body>
 </html>
-
