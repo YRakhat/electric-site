@@ -12,7 +12,8 @@ body {
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   color: #fff;
-  background: url('photo/fon.jpg') center/cover no-repeat fixed;
+  position: relative;
+  z-index: 0;
   overflow-x: hidden;
   width: 100%;
   box-sizing: border-box;
@@ -373,6 +374,15 @@ footer a:hover {
   }
 }
 
+/* === ФОН ЧЕРЕЗ ПСЕВДОЭЛЕМЕНТ (устраняет дёргание и размытость) === */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url('photo/fon.jpg') center center / cover no-repeat;
+  z-index: -1;
+  will-change: transform;
+}
 
 
   </style>
