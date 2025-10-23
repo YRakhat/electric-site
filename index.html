@@ -8,28 +8,16 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
 body {
-margin: 0;
-padding: 0;
-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-color: #fff;
-position: relative;
-overflow-x: hidden;
-width: 100%;
-box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  background: url('photo/fon.jpg') center/cover no-repeat fixed;
+  overflow-x: hidden;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-/* стабильный фон через псевдоэлемент */
-body::before {
-content: "";
-position: fixed;
-inset: 0;
-background: url('photo/fon.jpg') center/cover no-repeat;
-z-index: -1;
-transform: translate3d(0, 0, 0);
-background-attachment: scroll;
-backface-visibility: hidden;
-}
-    
 /* === HEADER === */
 header {
   display: flex;
@@ -126,11 +114,11 @@ header {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .card1 {
-background-image: url('photo/usluga5.jpg'); /* Установка электроприборов и освещения */
+background-image: url('photo/light.jpg'); /* Установка электроприборов и освещения */
 }
 
 .card2 {
-background-image: url('photo/light.jpg'); /* Прокладка и замена электропроводки */
+background-image: url('photo/usluga5.jpg'); /* Прокладка и замена электропроводки */
 }
 
 .card3 {
@@ -140,6 +128,8 @@ background-image: url('photo/usluga6.jpg'); /* Ремонт и обслужив�
 .card4 {
 background-image: url('photo/sheat.jpg'); /* Монтаж распределительных щитов */
 }
+
+
 
 .card::before {
   content: "";
@@ -164,23 +154,26 @@ background-image: url('photo/sheat.jpg'); /* Монтаж распределит
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
 }
 
-/* === LIST SECTION === */
 .list-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: flex-start;
-  padding: 60px 10%;
-  gap: 40px;
+  padding: 60px 8%; /* немного меньше боковых отступов */
+  gap: 25px;
   flex-wrap: wrap;
   background-color: white;
   color: #0b3d91;
   box-sizing: border-box;
+  width: 100%; /* не сужаем фон */
 }
 
 .list-section ul {
-  list-style: none;
+  list-style: none; /* убираем стандартные маркеры */
   padding-left: 0;
   margin: 0;
+  flex: 1;
+  min-width: 280px;
+  max-width: 420px;
 }
 
 .list-section li {
@@ -201,6 +194,7 @@ background-image: url('photo/sheat.jpg'); /* Монтаж распределит
   font-size: 18px;
 }
 
+/* === СЛАЙДЕР === */
 .image-slider {
   position: relative;
   width: 40%;
@@ -209,20 +203,38 @@ background-image: url('photo/sheat.jpg'); /* Монтаж распределит
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  background-color: transparent; /* убираем серый фон */
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 1s ease, transform 1s ease;
 }
 
+/* Активация при прокрутке */
+.image-slider.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Картинки */
 .image-slider img {
   position: absolute;
   width: 100%;
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1s ease-in-out;
+  animation: fadeSlide linear infinite;
 }
 
-.image-slider img.active {
-  opacity: 1;
+/* Анимация появления */
+@keyframes fadeSlide {
+  0% { opacity: 0; }
+  5% { opacity: 1; }
+  25% { opacity: 1; }
+  30% { opacity: 0; }
+  100% { opacity: 0; }
 }
+
+
 
 /* === ORDER BUTTON === */
 .order-btn-wrapper {
@@ -284,52 +296,71 @@ footer a:hover {
   opacity: 0.8;
 }
 
+/* === КАРТОЧКИ ДЛЯ КРАНОВ И СТАНКОВ === */
+.card-crane {
+  background-image: url('photo/most.jpeg');
+}
+
+.card-telfer {
+  background-image: url('photo/tale.jpg');
+}
+
+.card-machine {
+  background-image: url('photo/1stanok.jpeg');
+}
+
+/* Для визуального отделения первой категории */
+.services:nth-of-type(2) {
+  border-top: 6px solid #0b3d91;
+  padding-top: 70px;
+}
+
+
 /* === АДАПТАЦИЯ ДЛЯ СМАРТФОНОВ === */
 @media (max-width: 768px) {
-header {
-flex-direction: row; /* оставляем в одну линию /
-justify-content: space-between; / разнос логотип и иконку по краям */
-align-items: center;
-padding: 10px 15px;
-}
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 15px;
+  }
 
-.logo h1 {
-font-size: 20px;
-margin: 0;
-}
+  .logo h1 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
 
-.contacts {
-font-size: 16px;
-gap: 10px;
-}
+  .contacts {
+    font-size: 16px;
+    gap: 12px;
+  }
 
-.hero {
-padding: 60px 15px;
-}
+  .hero {
+    padding: 60px 15px;
+  }
 
-.hero h1 {
-font-size: 26px;
-}
+  .hero h1 {
+    font-size: 26px;
+  }
 
-.hero p {
-font-size: 16px;
-}
+  .hero p {
+    font-size: 16px;
+  }
 
-.list-section {
-flex-direction: column;
-padding: 40px 5%;
-gap: 30px;
-}
+  .list-section {
+    flex-direction: column;
+    padding: 40px 5%;
+    gap: 30px;
+  }
 
-.image-slider {
-width: 100%;
-height: 300px;
-}
+  .image-slider {
+    width: 100%;
+    height: 300px;
+  }
 
-.order-btn {
-font-size: 16px;
-padding: 14px 40px;
-}
+  .order-btn {
+    font-size: 16px;
+    padding: 14px 40px;
+  }
 }
   </style>
 </head>
@@ -347,13 +378,51 @@ padding: 14px 40px;
     </div>
   </header>
 
+  <!-- === HERO === -->
   <section class="hero">
     <h1>Профессиональный электрик в Алматы</h1>
-    <p>Установка, ремонт и обслуживание электрики в квартирах, домах и офисах.</p>
+    <p>Установка, ремонт и обслуживание электрики в квартирах, домах, офисах, а также работа с кранами и станками.</p>
   </section>
 
+  <!-- === NEW SECTION: КРАНЫ И СТАНКИ === -->
   <section class="services">
-    <h2>Наши услуги</h2>
+    <h2>Ремонт кранов и станков</h2>
+    <div class="service-cards">
+      <div class="card card-crane">
+        Ремонт кранов
+      </div>
+      <div class="card card-telfer">
+        Подключение и ремонт тельферов
+      </div>
+      <div class="card card-machine">
+        Ремонт любых станков
+      </div>
+    </div>
+  </section>
+
+  <section class="list-section">
+    <ul>
+      <li>Мостовые краны</li>
+      <li>Козловой кран</li>
+      <li>Башенный кран</li>
+      <li>Кран-балка</li>
+      <li>Телфер</li>
+      <li>Любой станок</li>
+      <li>1 точка гелентина</li>
+    </ul>
+
+    <div class="image-slider">
+      <img src="photo/stanok.jpeg" alt="Станок" class="active">
+      <img src="photo/tale.jpg" alt="Телфер">
+      <img src="photo/kozel.jpg" alt="козловой кран">
+      <img src="photo/most.jpg" alt="Мостовой кран">
+      <img src="photo/stanok2.jpg" alt="Станок" class="active">
+    </div>
+  </section>
+
+
+  <section class="services">
+    <h2>Наши услуги для домов и офисов</h2>
     <div class="service-cards">
       <div class="card card1">Установка электроприборов и освещения</div>
       <div class="card card2">Прокладка и замена электропроводки</div>
@@ -393,18 +462,31 @@ padding: 14px 40px;
     </a>
   </footer>
 
-  <script>
-    const images = document.querySelectorAll('.image-slider img');
-    let current = 0;
-    setInterval(() => {
-      images[current].classList.remove('active');
-      current = (current + 1) % images.length;
-      images[current].classList.add('active');
-    }, 4000);
-  </script>
+<script>
+document.addEventListener('scroll', () => {
+  document.querySelectorAll('.image-slider').forEach(slider => {
+    const rect = slider.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 150) {
+      slider.classList.add('visible');
+    }
+  });
+});
+
+// Настройка анимаций для всех слайдеров
+document.querySelectorAll('.image-slider').forEach(slider => {
+  const images = slider.querySelectorAll('img');
+  const imageCount = images.length;
+  const delay = 4; // 4 секунды на изображение
+  const totalDuration = imageCount * delay;
+
+  images.forEach((img, i) => {
+    img.style.animationDuration = `${totalDuration}s`;
+    img.style.animationDelay = `${i * delay}s`;
+  });
+});
+</script>
+
+
+
 </body>
 </html>
-
-
-
-
