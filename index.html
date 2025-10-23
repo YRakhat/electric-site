@@ -382,7 +382,11 @@ body::before {
   background: url('photo/fon.jpg') center center / cover no-repeat;
   z-index: -1;
   will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
+
 
 
   </style>
