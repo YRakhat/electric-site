@@ -375,25 +375,163 @@ footer a:hover {
 }
 
 /* === ФОН ЧЕРЕЗ ПСЕВДОЭЛЕМЕНТ (устраняет дёргание и размытость) === */
+/* === ФИНАЛЬНОЕ ИСПРАВЛЕНИЕ === */
+
+/* — Убираем дергание и размытость фона — */
 body {
-  position: relative;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #fff;
+  background: url('photo/fon.jpg') center center / cover no-repeat;
+  background-attachment: scroll;
   overflow-x: hidden;
-  transform: translateZ(0);
+  width: 100%;
+  min-height: 100vh;
+  box-sizing: border-box;
 }
 
+/* — Отдельный слой фона (устойчивый, без дергания) — */
 body::before {
   content: "";
-  position: absolute;
+  position: fixed;
   inset: 0;
   background: url('photo/fon.jpg') center center / cover no-repeat;
   z-index: -1;
   will-change: transform;
-  transform: translateY(var(--scrollY, 0));
   backface-visibility: hidden;
   perspective: 1000px;
-  transition: transform 0.25s ease-out;
+  transform: translateZ(0);
 }
 
+/* — Правим положение иконки WhatsApp — */
+header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  background-color: #0b3d91;
+  color: white;
+  flex-wrap: nowrap; /* предотвращаем перенос */
+}
+
+.contacts {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contacts a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.contacts a:hover {
+  opacity: 0.8;
+}
+
+/* — Адаптация для смартфонов — */
+@media (max-width: 768px) {
+  body {
+    background-size: cover;
+    background-attachment: scroll;
+  }
+
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contacts {
+    position: static;
+    align-self: flex-end;
+    margin-top: 8px;
+  }
+
+  .logo h1 {
+    font-size: 22px;
+  }
+}
+
+/* — Убираем скролл под футером — */
+html, body {
+  height: auto;
+  overflow-x: hidden;
+}
+
+footer {
+  margin-bottom: 0;
+  padding-bottom: 20px;
+}
+
+
+/* === ФИНАЛЬНЫЙ HEADER С АДАПТАЦИЕЙ === */
+header {
+  display: flex;
+  justify-content: space-between; /* логотип слева, иконка справа */
+  align-items: center;            /* выравниваем по одной линии */
+  padding: 15px 20px;
+  background-color: #0b3d91;
+  color: white;
+  flex-wrap: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.logo h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.contacts {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contacts a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.3s;
+}
+
+.contacts a:hover {
+  opacity: 0.8;
+}
+
+/* === АДАПТАЦИЯ ДЛЯ СМАРТФОНОВ === */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;     /* логотип сверху, иконка под ним */
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .logo h1 {
+    font-size: 22px;
+  }
+
+  .contacts {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .contacts a i {
+    font-size: 26px; /* чуть крупнее на мобильных для нажатия */
+  }
+}
 
 
 
@@ -521,9 +659,24 @@ document.querySelectorAll('.image-slider').forEach(slider => {
 });
 
 
+
+  let lastScrollY = 0;
+  let ticking = false;
+
+  function updateParallax() {
+    const offset = lastScrollY * 0.25; // чем меньше число — тем слабее эффект
+    document.body.style.setProperty('--scrollY', offset + 'px');
+    ticking = false;
+  }
+
   window.addEventListener('scroll', () => {
-    document.body.style.setProperty('--scrollY', window.scrollY * 0.15 + 'px');
+    lastScrollY = window.scrollY;
+    if (!ticking) {
+      window.requestAnimationFrame(updateParallax);
+      ticking = true;
+    }
   });
+
 
 
 
